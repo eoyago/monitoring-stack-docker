@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="preRegistraCompilacao" default="runRegist" basedir=".">
+
+        <taskdef resource="snkTasks.tasks" />
+        <property file="/home/hudson/versoes/properties/upload-servers.properties" />
+
+        <target name="runRegist">
+
+            <tstamp>
+                <format property="dhStartCmp" pattern="EEE MMM dd HH:mm:ss z yyyy" locale="en,US" />
+            </tstamp>
+
+            <registraCmpLocal 
+                    dhStartCmp="${dhStartCmp}"
+                    idServidorCmp="${compilacao.servidor.id}"
+                    hudsonId="${hudsonBuild}"
+                    versao="${sankhyaw.version}"
+                    build="1"
+                    revisaoSVN="1"
+                    projectId="${project.id}"
+            />
+        
+        </target>
+
+</project>
